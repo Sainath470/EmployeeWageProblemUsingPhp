@@ -15,20 +15,24 @@ function employeeAttendance(){
 }
 
 /**
- * function to calculate employee Wage
+ * function to calculate employee Wage using switch statement
  */
 function employeeWageCalculation(){
     $check = employeeAttendance();
-    if($check == 1){
-        echo "Employee is Present ";
-        $totalWage = $GLOBALS['FULL_TIME'] * $GLOBALS['WAGE_PER_HOUR'];
-        echo "And Full time Wage is: $totalWage";
-    }else if ($check == 2){
-        echo "Employee is Present ";
-        $totalWage = $GLOBALS['PART_TIME'] * $GLOBALS['WAGE_PER_HOUR'];
-        echo "And Part time Wage is: $totalWage";
-    }else{
-        echo "Employee is Absent";
+    switch($check){
+        case 1:
+            echo "Employee is Present ";
+            $totalWage = $GLOBALS['FULL_TIME'] * $GLOBALS['WAGE_PER_HOUR'];
+            echo "And Full time Wage is: $totalWage";
+            break;
+        case 2:
+            echo "Employee is Present ";
+            $totalWage = $GLOBALS['PART_TIME'] * $GLOBALS['WAGE_PER_HOUR'];
+            echo "And Part time Wage is: $totalWage";
+            break;
+        default:
+            echo "Employee is Absent";
+            break;
     }
 }
 
