@@ -2,25 +2,33 @@
 /**
  * Declaring varaible
  */
-$randomCheck = 0;
+$WAGE_PER_HOUR = 20;
+$FULL_TIME = 8;
 
 /**
- * creating a function to check whether Employee is Present or Absent
- * Using mt_rand() function. 
- * Can also use rand()
+ * function to provide random number as attendance
+ * returns random number either 1 or 2.
  */
-function checkingEmployeeAttendance(){
-    $randomCheck = mt_rand(1,2);
-    if($randomCheck == 1){
-        echo "Employee is Present";
-    }
-    else{
+function employeeAttendance(){
+        return mt_rand(1,2);
+}
+
+/**
+ * function to calculate employee Wage
+ */
+function employeeWageCalculation(){
+    $check = employeeAttendance();
+    if($check == 1){
+        echo "Employee is Present ";
+        $totalWage = $GLOBALS['FULL_TIME'] * $GLOBALS['WAGE_PER_HOUR'];
+        echo "And Wage is: $totalWage";
+    }else{
         echo "Employee is Absent";
     }
 }
 
 /**
- * Calling the checkingEmployeeAttendance() function.
+ * calling the function.
  */
-checkingEmployeeAttendance();
+employeeWageCalculation();
 ?>
