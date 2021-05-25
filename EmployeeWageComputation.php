@@ -6,6 +6,7 @@ $WAGE_PER_HOUR = 20;
 $FULL_TIME = 8;
 $PART_TIME = 4;
 $TOTAL_WORKING_DAYS = 20;
+$TOTAL_WORKING_HOURS = 100;
 
 /**
  * function to provide random number as attendance
@@ -17,25 +18,33 @@ function employeeAttendance(){
 
 /**
  * function to calculate employee Wage using switch statement
+ * returning total wage of employee , working days and working hours;
  */
 function employeeWageCalculation(){
     $workingDays = 0;
+    $employeeHours =0;
     global $TOTAL_WORKING_DAYS;
-    While($workingDays < $TOTAL_WORKING_DAYS){
+    global $TOTAL_WORKING_HOURS;
+
+    While($workingDays < $TOTAL_WORKING_DAYS && $employeeHours < $TOTAL_WORKING_HOURS){
         $check = employeeAttendance();
         switch($check){
             case 1:
-                $totalWage += $GLOBALS['FULL_TIME'] * $GLOBALS['WAGE_PER_HOUR'];
+                $employeeHours += $GLOBALS['FULL_TIME'];
                 break;
             case 2:
-                $totalWage += $GLOBALS['PART_TIME'] * $GLOBALS['WAGE_PER_HOUR'];
+                $employeeHours += $GLOBALS['PART_TIME'];
                 break;
             default:
                 break;
         }
         $workingDays++;
     }
-    echo "Total Employee Wage for 20 days is: $totalWage";
+    $totalWage = $employeeHours * $GLOBALS['WAGE_PER_HOUR'];
+
+    echo "Total Employee Wage for 20 days is: $totalWage\n";
+    echo "Total Employee Working Hours:" .$employeeHours."\n";
+    echo "Total Working days: " .$workingDays;
 }
 
 /**
