@@ -1,10 +1,25 @@
 <?php 
+
 class EmployeeWageComputation{
     /**
      * Declaring constant properties and initializing
      */
     const FULL_TIME_HOURS = 8;
     const PART_TIME_HOURS = 4;
+
+    private $company;
+    private $wagePerHour;
+    private $totalWorkingDays;
+    private $totalWorkingHours;
+
+     //constructor
+    public function __construct($company, $wagePerHour, $totalWorkingDays, $totalWorkingHours){
+        //Initialising the object
+        $this->company = $company;
+        $this->wagePerHour = $wagePerHour;
+        $this->totalWorkingDays = $totalWorkingDays;
+        $this->totalWorkingHours = $totalWorkingHours;
+    }
 
     /**
      * function to provide random number as attendance
@@ -16,13 +31,13 @@ class EmployeeWageComputation{
 
     /**
      * Method to calculate employee Wage using switch statement
-     * printing total wage of employee , working days and working hours;
+     * returning total wage of employee , working days and working hours;
      */
-    public function employeeWageCalculation($company, $wagePerHour, $totalWorkingDays, $totalWorkingHours){
+    public function employeeWageCalculation(){
         $workingDays = 0;
         $employeeHours =0;
 
-        While($workingDays < $totalWorkingDays && $employeeHours < $totalWorkingHours){
+        While($workingDays < $this->totalWorkingDays && $employeeHours < $this->totalWorkingHours){
             $check = $this->employeeAttendance();//calling method inside a method using this key word
             switch($check){
                 case 1:
@@ -36,13 +51,12 @@ class EmployeeWageComputation{
             }
             $workingDays++;
         }
-        
-        $totalWage = $employeeHours *  $wagePerHour;
+        $totalWage = $employeeHours *  $this->wagePerHour;
 
-        echo "Company name: " .$company. "\n";
+        echo "Company name: " .$this->company. "\n";
         echo "Total Employee Working Hours:" .$employeeHours."\n";
-        echo "Employee Wage Per Hour is: " .$wagePerHour. "\n";
-        echo "Total Employee Wage for $totalWorkingDays days is: $totalWage\n";
+        echo "Employee Wage Per Hour is: " .$this->wagePerHour. "\n";
+        echo "Total Employee Wage for $this->totalWorkingDays days is: $totalWage\n";
         echo "\n";
     }
 }
@@ -50,15 +64,14 @@ class EmployeeWageComputation{
 /**
  * creating an object for each company
  */
-$employeeWageComputationForACompany = new EmployeeWageComputation();
-$employeeWageComputationForBCompany = new EmployeeWageComputation();
-$employeeWageComputationForCCompany = new EmployeeWageComputation();
-
+$employeeWageComputationForACompany = new EmployeeWageComputation("A-company", 20, 20, 100);
+$employeeWageComputationForBCompany = new EmployeeWageComputation("B-company", 15, 30, 120);
+$employeeWageComputationForCCompany = new EmployeeWageComputation("C-company", 25, 15, 80);
 
 /**
  * calling the function using the object and passing the arguments 
  */
-$employeeWageComputationForACompany -> employeeWageCalculation("A-company", 20, 20, 100);
-$employeeWageComputationForBCompany -> employeeWageCalculation("B-company", 15, 30, 120);
-$employeeWageComputationForCCompany -> employeeWageCalculation("C-company", 25, 15, 80);
+$employeeWageComputationForACompany -> employeeWageCalculation();
+$employeeWageComputationForBCompany -> employeeWageCalculation();
+$employeeWageComputationForCCompany -> employeeWageCalculation();
 ?>
