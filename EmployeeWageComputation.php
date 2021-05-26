@@ -70,15 +70,25 @@ class EmployeeWageComputation{
 /**
  * creating an object for each company
  */
+<<<<<<< HEAD
 
 $employeeWageComputationForACompany = new EmployeeWageComputation("A-company", 20, 20, 100);
 $employeeWageComputationForBCompany = new EmployeeWageComputation("B-company", 15, 30, 120);
 $employeeWageComputationForCCompany = new EmployeeWageComputation("C-company", 25, 15, 80);
+=======
+$employeeWageComputation = new EmployeeWageComputation();
+>>>>>>> UC8-calculate-wage-for-multiple-companies
 
 /**
  * calling the function using the object  
  */
+<<<<<<< HEAD
 $employeeWageComputationForACompany -> employeeWageCalculation();
 $employeeWageComputationForBCompany -> employeeWageCalculation();
 $employeeWageComputationForCCompany -> employeeWageCalculation();
+=======
+$employeeWageComputation -> employeeWageCalculation("A-company", 20, 20, 100);
+$employeeWageComputation -> employeeWageCalculation("B-company", 15, 30, 120);
+$employeeWageComputation -> employeeWageCalculation("C-company", 25, 15, 80);
+>>>>>>> UC8-calculate-wage-for-multiple-companies
 ?>
