@@ -50,15 +50,12 @@ class EmployeeWageComputation{
 /**
  * creating an object for each company
  */
-$employeeWageComputationForACompany = new EmployeeWageComputation();
-$employeeWageComputationForBCompany = new EmployeeWageComputation();
-$employeeWageComputationForCCompany = new EmployeeWageComputation();
-
+$employeeWageComputation = new EmployeeWageComputation();
 
 /**
  * calling the function using the object and passing the arguments 
  */
-$employeeWageComputationForACompany -> employeeWageCalculation("A-company", 20, 20, 100);
-$employeeWageComputationForBCompany -> employeeWageCalculation("B-company", 15, 30, 120);
-$employeeWageComputationForCCompany -> employeeWageCalculation("C-company", 25, 15, 80);
+$employeeWageComputation -> employeeWageCalculation("A-company", 20, 20, 100);
+$employeeWageComputation -> employeeWageCalculation("B-company", 15, 30, 120);
+$employeeWageComputation -> employeeWageCalculation("C-company", 25, 15, 80);
 ?>
