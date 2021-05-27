@@ -1,47 +1,29 @@
-<?php 
-class EmployeeWageComputation{
+<?php
 
-    const FULL_TIME_HOURS = 8;
-    const PART_TIME_HOURS = 4;
-    /**
-     * Declaring properties
-     */
-    private $company;
-    private $wagePerHour;
-    private $totalWorkingDays;
-    private $totalWorkingHours;
+/**
+ * require is used to take the text/code that exists in the specified file
+ * produces fata error when file is not found and stops the script to
+ * execute
+ */
+require "CompanyEmployeeWage.php";
 
-
-    //constructor
-    public function __construct($company, $wagePerHour, $totalWorkingDays, $totalWorkingHours){
-        //Initialising the object
-        $this->company = $company;
-        $this->wagePerHour = $wagePerHour;
-        $this->totalWorkingDays = $totalWorkingDays;
-        $this->totalWorkingHours = $totalWorkingHours;
-    }
+/**
+ * Inherited class is defined by using extends keyword
+ * The child class will inherit all the public and protected properties 
+ * and methods from the parent class. In addition, it can have its own properties and methods.
+ */
+class EmployeeWageBuilder extends CompanyEmployeeWage{
 
     /**
-     * function to provide random number as attendance
-     * returns random number either 1 or 2.
-    */
-    function employeeAttendance(){
-            return mt_rand(1,3);
-    }
-
-    /**
-     * Method to calculate employee Wage using switch statement
-     * returning total wage of employee , working days and working hours;
+     * function to calculate employee wage 
+     * @return void
      */
     function employeeWageCalculation(){
         $workingDays = 0;
         $employeeHours =0;
 
-        //creating an empty array
-        $companyEmployeeWage = array();
-
         While($workingDays < $this->totalWorkingDays && $employeeHours < $this->totalWorkingHours){
-            $check = $this->employeeAttendance();//calling method inside a method using this key word
+            $check = mt_rand(1,3);
             switch($check){
                 case 1:
                     $employeeHours += self::FULL_TIME_HOURS;
@@ -54,31 +36,29 @@ class EmployeeWageComputation{
             }
             $workingDays++;
         }
-        $totalWage = $employeeHours *  $this->wagePerHour;
-
-        //pushing the elements into array
-        array_push($companyEmployeeWage, "$this->company", "$employeeHours", "$this->wagePerHour", "$totalWage" );
+        $totalEmployeeWage = $employeeHours *  $this->wagePerHour;
 
         //printing them using array index
-        echo "Company name: " .$companyEmployeeWage[0]. "\n";
-        echo "Total Employee Working Hours:" .$companyEmployeeWage[1]."\n";
-        echo "Employee Wage Per Hour is: " .$companyEmployeeWage[2]. "\n";
-        echo "Total Employee Wage for $this->totalWorkingDays days is: $companyEmployeeWage[3]\n";
+        echo "Company name: " .$this->companyName. "\n";
+        echo "Total Employee Working Hours:" .$this->totalWorkingHours."\n";
+        echo "Employee Wage Per Hour is: " .$this->totalWorkingDays. "\n";
+        echo "Total Employee Wage for $this->totalWorkingDays days is: $totalEmployeeWage\n";
         echo "\n";
     }
 }
-/**
- * creating an object for each company
- */
-$employeeWageComputationForACompany = new EmployeeWageComputation("A-company", 20, 20, 100);
-$employeeWageComputationForBCompany = new EmployeeWageComputation("B-company", 15, 30, 120);
-$employeeWageComputationForCCompany = new EmployeeWageComputation("C-company", 25, 20, 150);
 
 /**
- * calling the function using the object  
+ * creating multiple objects of class EmployeeWageBuilder
  */
-$employeeWageComputationForACompany -> employeeWageCalculation();
-$employeeWageComputationForBCompany -> employeeWageCalculation();
-$employeeWageComputationForCCompany -> employeeWageCalculation();
+$employeeWageBuilderACompany = new EmployeeWageBuilder("A-Company", 20, 15, 100);
+$employeeWageBuilderBCompany = new EmployeeWageBuilder("B-Company", 19, 16, 80);
+$employeeWageBuilderCCompany = new EmployeeWageBuilder("C-Company", 17, 18, 90);
+
+/**
+ * calling the function employeeWageCalculation 
+ */
+$employeeWageBuilderACompany-> employeeWageCalculation();
+$employeeWageBuilderBCompany-> employeeWageCalculation();
+$employeeWageBuilderCCompany-> employeeWageCalculation();
 
 ?>
