@@ -19,6 +19,7 @@ class CompanyBWage extends CompanyEmployeeWage implements EmployeeWageBuilderInt
     function employeeWageCalculation(){
         $workingDays = 0;
         $employeeHours =0;
+        $companyEmployeeWageArray = array();
 
         While($workingDays < $this->totalWorkingDays && $employeeHours < $this->totalWorkingHours){
             $check = mt_rand(1,3);
@@ -36,11 +37,27 @@ class CompanyBWage extends CompanyEmployeeWage implements EmployeeWageBuilderInt
         }
         $totalEmployeeWage = $employeeHours *  $this->wagePerHour;
 
+        array_push($companyEmployeeWageArray,
+                   $this->companyName,
+                   $this->wagePerHour, 
+                   $employeeHours, 
+                   $this->totalWorkingDays, 
+                   $totalEmployeeWage);
+
+                foreach($companyEmployeeWageArray as $values){
+                list($values) = $companyEmployeeWageArray;
+                }
+                
+                echo "Elements in the array list are: \n";
+                foreach($companyEmployeeWageArray as $values){
+                    echo $values. "\n";
+                }
+
         //printing them using array index
-        echo "Company name: " .$this->companyName. "\n";
-        echo "Total Employee Working Hours:" .$this->totalWorkingHours."\n";
-        echo "Employee Wage Per Hour is: " .$this->totalWorkingDays. "\n";
-        echo "Total Employee Wage for $this->totalWorkingDays days is: $totalEmployeeWage\n";
+        echo "Company name: " .$companyEmployeeWageArray[0]. "\n";
+        echo "Total Employee Working Hours:" .$companyEmployeeWageArray[2]."\n";
+        echo "Employee Wage Per Hour is: " .$companyEmployeeWageArray[1]. "\n";
+        echo "Total Employee Wage for $companyEmployeeWageArray[3] days is: $companyEmployeeWageArray[4]\n";
         echo "\n";
     }
 }
