@@ -1,22 +1,20 @@
 <?php
 
 /**
- * require is used to take the text/code that exists in the specified file
- * produces fata error when file is not found and stops the script to
- * execute
- */
-require "CompanyEmployeeWage.php";
-
-/**
  * Inherited class is defined by using extends keyword
  * The child class will inherit all the public and protected properties 
  * and methods from the parent class. In addition, it can have its own properties and methods.
+ * CompanyBWage class is inheriting the properties of CompanyEmployeeWage class and 
+ * implementing the methods of EmployeeWageBuilderInterface
  */
-class EmployeeWageBuilder extends CompanyEmployeeWage{
+class CompanyBWage extends CompanyEmployeeWage implements EmployeeWageBuilderInterface{
 
-    /**
+     /**
      * function to calculate employee wage 
-     * @return void
+     * @var totalWorkingDays is the number of working days of employee
+     * @var toatalWorkingHours is the number of working hours of employee
+     * @var totalEmployeeWage is the total wage of employee after particular number of working days
+     * @return nothing 
      */
     function employeeWageCalculation(){
         $workingDays = 0;
@@ -47,18 +45,5 @@ class EmployeeWageBuilder extends CompanyEmployeeWage{
     }
 }
 
-/**
- * creating multiple objects of class EmployeeWageBuilder
- */
-$employeeWageBuilderACompany = new EmployeeWageBuilder("A-Company", 20, 15, 100);
-$employeeWageBuilderBCompany = new EmployeeWageBuilder("B-Company", 19, 16, 80);
-$employeeWageBuilderCCompany = new EmployeeWageBuilder("C-Company", 17, 18, 90);
-
-/**
- * calling the function employeeWageCalculation 
- */
-$employeeWageBuilderACompany-> employeeWageCalculation();
-$employeeWageBuilderBCompany-> employeeWageCalculation();
-$employeeWageBuilderCCompany-> employeeWageCalculation();
 
 ?>

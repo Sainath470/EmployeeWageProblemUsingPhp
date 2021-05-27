@@ -1,11 +1,15 @@
 <?php
 class CompanyEmployeeWage{
 
+    /**
+    * declaring and initializing constant properties
+    */
     const FULL_TIME_HOURS = 8;
     const PART_TIME_HOURS = 4;
-     /**
-     * Declaring properties
-     */
+
+    /**
+    * Declaring properties
+    */
     public $companyName;
     public $wagePerHour;
     public $totalWorkingDays;
@@ -13,8 +17,8 @@ class CompanyEmployeeWage{
 
 
     /**
-     * constructor to initialising the object
-     */
+    * constructor to initialising the object
+    */
     function __construct($companyName, $wagePerHour, $totalWorkingDays, $totalWorkingHours){
         //Initialising the object
         $this->companyName = $companyName;
