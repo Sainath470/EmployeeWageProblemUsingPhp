@@ -14,7 +14,7 @@ require "CompanyBWage.php";
 class EmployeeWageBuilderMain{
 }
 /**
- * creating multiple objects
+ * creating objects of CompanyAWage class and CompanyBWage class
  */
 $employeeWageBuilderACompany = new CompanyAWage("A-Company", 20, 15, 100);
 $employeeWageBuilderBCompany = new CompanyBWage("B-Company", 19, 16, 80);
